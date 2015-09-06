@@ -1,6 +1,6 @@
 describe("Moving-in-time buttons", function() {
   var $movingInTimeButtons,
-    dateRange,
+    fakeDateRange,
     movingInTimeButtons,
     config = {
       buttonsSelectors: {
@@ -21,34 +21,38 @@ describe("Moving-in-time buttons", function() {
       "<li> <button class='" + config.buttonsSelectors.previous + "'>Previous</button> </li>" +
       "</ul>"
     );
-    dateRange = new DateRange();
+    fakeDateRange = {
+      next: function() {},
+      current: function() {},
+      previous: function() {},
+    };
     movingInTimeButtons = new MovingInTimeButtons(
-      $movingInTimeButtons, dateRange, config
+      $movingInTimeButtons, fakeDateRange, config
     );
     clickOnButton = makeClickOnButtonFn($movingInTimeButtons, config.buttonsSelectors);
   });
 
   it("tells the date range to move to the next period when the next button is clicked", function() {
-    spyOn(dateRange, next);
+    spyOn(fakeDateRange, next);
 
     clickOnButton(next);
 
-    expect(dateRange.next).toHaveBeenCalled();
+    expect(fakeDateRange.next).toHaveBeenCalled();
   });
 
   it("tells the date range to move to the current period when the current button is clicked", function() {
-    spyOn(dateRange, current);
+    spyOn(fakeDateRange, current);
 
     clickOnButton(current);
 
-    expect(dateRange.current).toHaveBeenCalled();
+    expect(fakeDateRange.current).toHaveBeenCalled();
   });
 
   it("tells the date range to move to the previous period when the previous button is clicked", function() {
-    spyOn(dateRange, previous);
+    spyOn(fakeDateRange, previous);
 
     clickOnButton(previous);
 
-    expect(dateRange.previous).toHaveBeenCalled();
+    expect(fakeDateRange.previous).toHaveBeenCalled();
   });
 });

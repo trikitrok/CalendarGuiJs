@@ -1,6 +1,6 @@
-describe("Periods buttons", function() {
+describe("Period selection buttons", function() {
   var $periodButtons,
-    dateRange,
+    fakeDateRange,
     periodButtons,
     config = {
       activePeriodCssClass: "current-selected-period",
@@ -22,9 +22,13 @@ describe("Periods buttons", function() {
       "<li> <button class='" + config.buttonsSelectors.year + "'>Year</button> </li>" +
       "</ul>"
     );
-    dateRange = new DateRange();
-    periodButtons = new PeriodButtons(
-      $periodButtons, dateRange, config
+    fakeDateRange = {
+      useWeek: function() {},
+      useMonth: function() {},
+      useYear: function() {},
+    };
+    periodButtons = new PeriodSelectionButtons(
+      $periodButtons, fakeDateRange, config
     );
     clickOnButton = makeClickOnButtonFn($periodButtons, config.buttonsSelectors);
   });
@@ -56,26 +60,26 @@ describe("Periods buttons", function() {
   });
 
   it("tells the date range to use a week period when the week button is clicked", function() {
-    spyOn(dateRange, 'useWeek')
+    spyOn(fakeDateRange, 'useWeek')
 
     clickOnButton(week);
 
-    expect(dateRange.useWeek).toHaveBeenCalled();
+    expect(fakeDateRange.useWeek).toHaveBeenCalled();
   });
 
   it("tells the date range to use a month period when the month button is clicked", function() {
-    spyOn(dateRange, 'useMonth')
+    spyOn(fakeDateRange, 'useMonth')
 
     clickOnButton(month);
 
-    expect(dateRange.useMonth).toHaveBeenCalled();
+    expect(fakeDateRange.useMonth).toHaveBeenCalled();
   });
 
   it("tells the date range to use a year period when the year button is clicked", function() {
-    spyOn(dateRange, 'useYear')
+    spyOn(fakeDateRange, 'useYear')
 
     clickOnButton(year);
 
-    expect(dateRange.useYear).toHaveBeenCalled();
+    expect(fakeDateRange.useYear).toHaveBeenCalled();
   });
 });
