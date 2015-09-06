@@ -5,7 +5,7 @@ function correctlyImplementsPeriodsInterfaceBehavior(concretePeriodsImplementati
     var periods = concretePeriodsImplementation;
 
     describe('Week', function() {
-      var week = new periods.Week();
+      var week = periods.Week.create();
 
       it("returns the date range of the week containing a given date",
         function() {
@@ -33,7 +33,7 @@ function correctlyImplementsPeriodsInterfaceBehavior(concretePeriodsImplementati
     });
 
     describe('Month', function() {
-      var month = new periods.Month();
+      var month = periods.Month.create();
 
       it("returns the date range of the month containing a given date",
         function() {
@@ -61,7 +61,7 @@ function correctlyImplementsPeriodsInterfaceBehavior(concretePeriodsImplementati
     });
 
     describe('Year', function() {
-      var year = new periods.Year();
+      var year = periods.Year.create();
 
       it("returns the date range of the year containing a given date",
         function() {

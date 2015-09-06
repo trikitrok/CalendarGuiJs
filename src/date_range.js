@@ -3,14 +3,14 @@
 var calendar = calendar || {};
 
 calendar.DateRange = (function() {
-  var api = {};
-  api.create = create;
-  return api;
+  return {
+    create: create
+  };
 
   function create(clock, periods) {
-    var month = new periods.Month(),
-      week = new periods.Week(),
-      year = new periods.Year(),
+    var month = periods.Month.create(),
+      week = periods.Week.create(),
+      year = periods.Year.create(),
       period = week,
       currentDate = clock.currentDate(),
       dateRange = period.rangeFor(currentDate),

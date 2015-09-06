@@ -9,33 +9,48 @@ calendar.periodsUsingMoment = (function() {
     WEEKS = "weeks";
 
   return {
-    Month: Month,
-    Year: Year,
-    Week: Week
+    Month: {
+      create: createMonth
+    },
+    Year: {
+      create: createYear
+    },
+    Week: {
+      create: createWeek
+    }
   };
 
-  function Month() {
-    this.rangeFor = rangeBetween(
-      dateOf(firstDayOfMonth), dateOf(lastDayOfMonth)
-    );
-    this.nextDate = dateOf(ahead(1, MONTHS));
-    this.previousDate = dateOf(back(1, MONTHS));
+  function createMonth() {
+    var aMonth = {
+      rangeFor: rangeBetween(
+        dateOf(firstDayOfMonth), dateOf(lastDayOfMonth)
+      ),
+      nextDate: dateOf(ahead(1, MONTHS)),
+      previousDate: dateOf(back(1, MONTHS))
+    };
+    return aMonth;
   }
 
-  function Week() {
-    this.rangeFor = rangeBetween(
-      dateOf(firstDayOfWeek), dateOf(lastDayOfWeek)
-    );
-    this.nextDate = dateOf(ahead(1, WEEKS));
-    this.previousDate = dateOf(back(1, WEEKS));
+  function createWeek() {
+    var aWeek = {
+      rangeFor: rangeBetween(
+        dateOf(firstDayOfWeek), dateOf(lastDayOfWeek)
+      ),
+      nextDate: dateOf(ahead(1, WEEKS)),
+      previousDate: dateOf(back(1, WEEKS))
+    };
+    return aWeek;
   }
 
-  function Year() {
-    this.rangeFor = rangeBetween(
-      dateOf(firstDayOfYear), dateOf(lastDayOfYear)
-    );
-    this.nextDate = dateOf(ahead(1, YEARS));
-    this.previousDate = dateOf(back(1, YEARS));
+  function createYear() {
+    var aYear = {
+      rangeFor: rangeBetween(
+        dateOf(firstDayOfYear), dateOf(lastDayOfYear)
+      ),
+      nextDate: dateOf(ahead(1, YEARS)),
+      previousDate: dateOf(back(1, YEARS))
+    };
+    return aYear;
   }
 
   function dateOf(fn) {
