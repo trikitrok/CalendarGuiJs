@@ -13,12 +13,14 @@ calendar.DateRangeView = function(elem) {
   );
 };
 
-calendar.DateRangeView.prototype.render = function(dateRange) {
-  $('<li>', {
-    text: dateRange.start
-  }).appendTo(this.$elem);
+_.extend(calendar.DateRangeView.prototype, {
+  render: function(dateRange) {
+    $('<li>', {
+      text: dateRange.start
+    }).appendTo(this.$elem);
 
-  $('<li>', {
-    text: dateRange.end
-  }).appendTo(this.$elem);
-};
+    $('<li>', {
+      text: dateRange.end
+    }).appendTo(this.$elem);
+  }
+});

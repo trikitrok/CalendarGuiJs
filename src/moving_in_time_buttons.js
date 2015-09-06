@@ -11,18 +11,17 @@ calendar.MovingInTimeButtons = function(buttons, dateRange, config) {
   this.$buttons.on('click', this._buttonSelector('previous'), _.bind(this._previous, this));
 };
 
-calendar.MovingInTimeButtons.prototype._next = function() {
-  this.dateRange.next();
-};
-
-calendar.MovingInTimeButtons.prototype._current = function() {
-  this.dateRange.current();
-};
-
-calendar.MovingInTimeButtons.prototype._previous = function() {
-  this.dateRange.previous();
-};
-
-calendar.MovingInTimeButtons.prototype._buttonSelector = function(period) {
-  return '.' + this.config.buttonsSelectors[period];
-};
+_.extend(calendar.MovingInTimeButtons.prototype, {
+  _next: function() {
+    this.dateRange.next();
+  },
+  _current: function() {
+    this.dateRange.current();
+  },
+  _previous: function() {
+    this.dateRange.previous();
+  },
+  _buttonSelector: function(period) {
+    return '.' + this.config.buttonsSelectors[period];
+  }
+});
