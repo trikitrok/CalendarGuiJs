@@ -1,3 +1,5 @@
+'use strict';
+
 var expectsThat = (function() {
   return {
     dateRange: expectThatDateRange

@@ -1,3 +1,5 @@
+'use strict';
+
 function clickOn(buttons, buttonSelector) {
   buttons.find(buttonSelector).click()
 }

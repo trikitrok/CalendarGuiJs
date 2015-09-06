@@ -1,7 +1,10 @@
+'use strict';
+
 describe("Moving-in-time buttons", function() {
   var $movingInTimeButtons,
     fakeDateRange,
     movingInTimeButtons,
+    clickOnButton,
     config = {
       buttonsSelectors: {
         next: 'week-btn',

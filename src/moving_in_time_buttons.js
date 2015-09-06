@@ -1,3 +1,5 @@
+'use strict';
+
 var calendar = calendar || {};
 
 calendar.MovingInTimeButtons = function(buttons, dateRange, config) {

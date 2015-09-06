@@ -1,3 +1,5 @@
+'use strict';
+
 describe("Date Range view", function() {
   var $ul, dateRangeView;
 

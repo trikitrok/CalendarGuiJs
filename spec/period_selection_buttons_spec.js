@@ -1,7 +1,10 @@
+'use strict';
+
 describe("Period selection buttons", function() {
   var $periodButtons,
     fakeDateRange,
     periodButtons,
+    clickOnButton,
     config = {
       activePeriodCssClass: "current-selected-period",
       buttonsSelectors: {

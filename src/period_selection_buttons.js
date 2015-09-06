@@ -1,3 +1,5 @@
+'use strict';
+
 var calendar = calendar || {};
 
 calendar.PeriodSelectionButtons = function(buttons, dateRange, config) {

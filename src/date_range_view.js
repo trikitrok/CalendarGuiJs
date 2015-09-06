@@ -1,3 +1,5 @@
+'use strict';
+
 var calendar = calendar || {};
 
 calendar.DateRangeView = function(elem) {
