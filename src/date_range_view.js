@@ -13,12 +13,7 @@ calendar.DateRangeView = (function() {
       render: render
     };
 
-    pubsub.subscribe(
-      CustomEvents.DateRangeChanged,
-      function(event, dateRange) {
-        render(dateRange);
-      }
-    );
+    pubsub.subscribe(CustomEvents.DateRangeChanged, update);
 
     return self;
 
@@ -30,6 +25,10 @@ calendar.DateRangeView = (function() {
       $('<li>', {
         text: dateRange.end
       }).appendTo(self.$elem);
+    }
+
+    function update(event, dateRange) {
+      render(dateRange);
     }
   }
 })();
