@@ -1,7 +1,7 @@
 var DateRangeView = function(elem) {
   var self = this;
   this.$elem = $(elem);
-  $(document).on('DateRangeChanged', function(event, dateRange) {
+  $(document).on(CustomEvents.DateRangeChanged, function(event, dateRange) {
     self.render(dateRange);
   });
 };

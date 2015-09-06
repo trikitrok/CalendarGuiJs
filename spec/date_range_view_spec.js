@@ -1,5 +1,9 @@
 describe("Date Range view", function() {
-  var $ul = $("<ul></ul>");
+  var $ul;
+
+  beforeEach(function() {
+    $ul = $("<ul></ul>");
+  });
 
   it("is created showing neither start nor end date", function() {
     var dateRangeView = new DateRangeView($ul);
@@ -28,7 +32,7 @@ describe("Date Range view", function() {
       },
       dateRangeView = new DateRangeView($ul);
 
-    $(document).trigger('DateRangeChanged', dateRange);
+    $(document).trigger(CustomEvents.DateRangeChanged, dateRange);
 
     expect($ul.find('li').length).toBe(2);
     expect($ul.find('li').first().html()).toBe(dateRange.start);
