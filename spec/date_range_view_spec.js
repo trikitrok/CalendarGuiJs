@@ -32,7 +32,7 @@ describe("Date Range view", function() {
       },
       dateRangeView = new DateRangeView($ul);
 
-    $(document).trigger(CustomEvents.DateRangeChanged, dateRange);
+    pubsub.publish(CustomEvents.DateRangeChanged, dateRange);
 
     expect($ul.find('li').length).toBe(2);
     expect($ul.find('li').first().html()).toBe(dateRange.start);

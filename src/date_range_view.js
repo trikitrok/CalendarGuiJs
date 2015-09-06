@@ -1,9 +1,12 @@
 var DateRangeView = function(elem) {
   var self = this;
   this.$elem = $(elem);
-  $(document).on(CustomEvents.DateRangeChanged, function(event, dateRange) {
-    self.render(dateRange);
-  });
+  pubsub.subscribe(
+    CustomEvents.DateRangeChanged,
+    function(event, dateRange) {
+      self.render(dateRange);
+    }
+  );
 };
 
 DateRangeView.prototype.render = function(dateRange) {
