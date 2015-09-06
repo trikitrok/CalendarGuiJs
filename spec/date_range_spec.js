@@ -6,7 +6,7 @@ describe('DateRange', function() {
   beforeEach(function() {
     clock = getClockInstance();
     spyOn(clock, 'currentDate').and.returnValue(moment("2014-11-11").toDate());
-    dateRange = dateRangeFactory.create(clock, periodsUsingMoment);
+    dateRange = calendar.dateRangeFactory.create(clock, calendar.periodsUsingMoment);
   });
 
   describe('on creation', function() {

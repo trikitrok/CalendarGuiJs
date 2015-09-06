@@ -27,7 +27,7 @@ describe("Period selection buttons", function() {
       useMonth: function() {},
       useYear: function() {},
     };
-    periodButtons = new PeriodSelectionButtons(
+    periodButtons = new calendar.PeriodSelectionButtons(
       $periodButtons, fakeDateRange, config
     );
     clickOnButton = makeClickOnButtonFn($periodButtons, config.buttonsSelectors);

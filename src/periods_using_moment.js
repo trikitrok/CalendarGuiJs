@@ -1,6 +1,8 @@
 'use strict';
 
-var periodsUsingMoment = (function() {
+var calendar = calendar || {};
+
+calendar.periodsUsingMoment = (function() {
   var DAYS = "days",
     YEARS = "years",
     MONTHS = "months",

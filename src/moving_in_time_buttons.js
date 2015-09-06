@@ -1,4 +1,6 @@
-var MovingInTimeButtons = function(buttons, dateRange, config) {
+var calendar = calendar || {};
+
+calendar.MovingInTimeButtons = function(buttons, dateRange, config) {
   this.$buttons = $(buttons);
   this.dateRange = dateRange;
   this.config = config;
@@ -7,18 +9,18 @@ var MovingInTimeButtons = function(buttons, dateRange, config) {
   this.$buttons.on('click', this._buttonSelector('previous'), _.bind(this._previous, this));
 };
 
-MovingInTimeButtons.prototype._next = function() {
+calendar.MovingInTimeButtons.prototype._next = function() {
   this.dateRange.next();
 };
 
-MovingInTimeButtons.prototype._current = function() {
+calendar.MovingInTimeButtons.prototype._current = function() {
   this.dateRange.current();
 };
 
-MovingInTimeButtons.prototype._previous = function() {
+calendar.MovingInTimeButtons.prototype._previous = function() {
   this.dateRange.previous();
 };
 
-MovingInTimeButtons.prototype._buttonSelector = function(period) {
+calendar.MovingInTimeButtons.prototype._buttonSelector = function(period) {
   return '.' + this.config.buttonsSelectors[period];
 };

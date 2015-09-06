@@ -6,7 +6,7 @@ describe("Date Range view", function() {
   });
 
   it("is created showing neither start nor end date", function() {
-    var dateRangeView = new DateRangeView($ul);
+    var dateRangeView = new calendar.DateRangeView($ul);
 
     expect($ul.find('li').length).toBe(0);
   });
@@ -16,7 +16,7 @@ describe("Date Range view", function() {
         start: "2014-12-22",
         end: "2014-12-28"
       },
-      dateRangeView = new DateRangeView($ul);
+      dateRangeView = new calendar.DateRangeView($ul);
 
     dateRangeView.render(dateRange);
 
@@ -30,7 +30,7 @@ describe("Date Range view", function() {
         start: "2011-02-07",
         end: "2011-02-13"
       },
-      dateRangeView = new DateRangeView($ul);
+      dateRangeView = new calendar.DateRangeView($ul);
 
     pubsub.publish(CustomEvents.DateRangeChanged, dateRange);
 

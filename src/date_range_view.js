@@ -1,4 +1,6 @@
-var DateRangeView = function(elem) {
+var calendar = calendar || {};
+
+calendar.DateRangeView = function(elem) {
   var self = this;
   this.$elem = $(elem);
   pubsub.subscribe(
@@ -9,7 +11,7 @@ var DateRangeView = function(elem) {
   );
 };
 
-DateRangeView.prototype.render = function(dateRange) {
+calendar.DateRangeView.prototype.render = function(dateRange) {
   $('<li>', {
     text: dateRange.start
   }).appendTo(this.$elem);

@@ -1,6 +1,8 @@
 'use strict';
 
-var dateRangeFactory = (function() {
+var calendar = calendar || {};
+
+calendar.dateRangeFactory = (function() {
   var api = {};
   api.create = create;
   return api;
