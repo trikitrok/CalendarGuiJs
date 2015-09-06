@@ -5,7 +5,7 @@ describe("Date Range view", function() {
 
   beforeEach(function() {
     $ul = $("<ul></ul>");
-    dateRangeView = new calendar.DateRangeView($ul);
+    dateRangeView = calendar.DateRangeView.create($ul);
   });
 
   it("is created showing neither start nor end date", function() {

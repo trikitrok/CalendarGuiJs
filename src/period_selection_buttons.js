@@ -18,6 +18,8 @@ calendar.PeriodSelectionButtons = (function() {
     self.$buttons.on('click', buttonSelector('month'), useMonth);
     self.$buttons.on('click', buttonSelector('year'), useYear);
 
+    return self;
+
     function useWeek() {
       highlightOnlyButton("week");
       self.dateRange.useWeek();
