@@ -39,21 +39,25 @@ calendar.dateRangeFactory = (function() {
     function current() {
       currentDate = clock.currentDate();
       dateRange = period.rangeFor(currentDate);
+      pubsub.publish(CustomEvents.DateRangeChanged, dateRange);
     }
 
     function previous() {
       currentDate = period.previousDate(currentDate);
       dateRange = period.rangeFor(currentDate);
+      pubsub.publish(CustomEvents.DateRangeChanged, dateRange);
     }
 
     function next() {
       currentDate = period.nextDate(currentDate);
       dateRange = period.rangeFor(currentDate);
+      pubsub.publish(CustomEvents.DateRangeChanged, dateRange);
     }
 
     function updateRangeUsingNewPeriod(newPeriod) {
       period = newPeriod;
       dateRange = period.rangeFor(currentDate);
+      pubsub.publish(CustomEvents.DateRangeChanged, dateRange);
     }
   };
 })();

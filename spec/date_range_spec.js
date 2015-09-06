@@ -129,4 +129,87 @@ describe('DateRange', function() {
       expectsThat.dateRange(dateRange).startsOn("2014-01-01").andEndsOn("2014-12-31");
     });
   });
+
+  describe("broadcasting that its state has changed", function() {
+    var clock, dateRange;
+
+    beforeEach(function() {
+      clock = getClockInstance();
+      spyOn(clock, 'currentDate').and.returnValue(moment("2014-11-11").toDate());
+      dateRange = calendar.dateRangeFactory.create(clock, calendar.periodsUsingMoment);
+    });
+
+    it("emits a date-range-changed event when the period is set to a month", function() {
+      pubsub.subscribe(CustomEvents.DateRangeChanged,
+        function(event, dateRange) {
+          expectsThat.dateRange(dateRange).startsOn("2014-11-01").andEndsOn("2014-11-30");
+        }
+      );
+
+      dateRange.useMonth();
+
+      pubsub.unsubscribeAll(CustomEvents.DateRangeChanged);
+    });
+
+
+    it("emits a date-range-changed event when the period is set to a week", function() {
+      pubsub.subscribe(CustomEvents.DateRangeChanged,
+        function(event, dateRange) {
+          expectsThat.dateRange(dateRange).startsOn("2014-11-10").andEndsOn("2014-11-16");
+        }
+      );
+
+      dateRange.useWeek();
+
+      pubsub.unsubscribeAll(CustomEvents.DateRangeChanged);
+    });
+
+    it("emits a date-range-changed event when the period is set to a year", function() {
+      pubsub.subscribe(CustomEvents.DateRangeChanged,
+        function(event, dateRange) {
+          expectsThat.dateRange(dateRange).startsOn("2014-01-01").andEndsOn("2014-12-31");
+        }
+      );
+
+      dateRange.useYear();
+
+      pubsub.unsubscribeAll(CustomEvents.DateRangeChanged);
+    });
+
+    it("emits a date-range-changed event when it moves to the next period", function() {
+      pubsub.subscribe(CustomEvents.DateRangeChanged,
+        function(event, dateRange) {
+          expectsThat.dateRange(dateRange).startsOn("2014-11-17").andEndsOn("2014-11-23");
+        }
+      );
+
+      dateRange.next();
+
+      pubsub.unsubscribeAll(CustomEvents.DateRangeChanged);
+    });
+
+    it("emits a date-range-changed event when it moves to the previous period", function() {
+      pubsub.subscribe(CustomEvents.DateRangeChanged,
+        function(event, dateRange) {
+          expectsThat.dateRange(dateRange).startsOn("2014-11-03").andEndsOn("2014-11-09");
+        }
+      );
+
+      dateRange.previous();
+
+      pubsub.unsubscribeAll(CustomEvents.DateRangeChanged);
+    });
+
+    it("emits a date-range-changed event when it moves to the current period", function() {
+      pubsub.subscribe(CustomEvents.DateRangeChanged,
+        function(event, dateRange) {
+          expectsThat.dateRange(dateRange).startsOn("2014-11-10").andEndsOn("2014-11-16");
+        }
+      );
+
+      dateRange.current();
+
+      pubsub.unsubscribeAll(CustomEvents.DateRangeChanged);
+    });
+  });
 });

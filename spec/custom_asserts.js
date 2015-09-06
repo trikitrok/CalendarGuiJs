@@ -10,11 +10,10 @@ var expectsThat = (function() {
       startsOn: function(startDate) {
         return {
           andEndsOn: function(endDate) {
-            var startDate = getDate(dateRange, "startDate"),
-              endDate = getDate(dateRange, "endDate");
-
-            expect(startDate).toEqual(moment(startDate).toDate());
-            expect(endDate).toEqual(moment(endDate).toDate());
+            var actualStartDate = getDate(dateRange, "startDate"),
+              actualEndDate = getDate(dateRange, "endDate");
+            expect(actualStartDate).toEqual(moment(startDate).toDate());
+            expect(actualEndDate).toEqual(moment(endDate).toDate());
           }
         };
       }

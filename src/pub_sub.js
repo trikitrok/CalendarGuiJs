@@ -11,6 +11,9 @@ var pubsub = (function() {
     },
     subscribe: function subscribe(event, callbackFn) {
       $(document).on(event, callbackFn);
+    },
+    unsubscribeAll: function unsubscribeAll(event) {
+      $(document).off(event);
     }
   };
   return api;
