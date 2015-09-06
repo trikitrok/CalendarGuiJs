@@ -2,11 +2,7 @@
 
 var calendar = calendar || {};
 
-calendar.DateRange = (function() {
-  return {
-    create: create
-  };
-
+calendar.DateRange = createClassInitializedBy(
   function create(clock, periods) {
     var month = periods.Month.create(),
       week = periods.Week.create(),
@@ -59,5 +55,5 @@ calendar.DateRange = (function() {
       dateRange = period.rangeFor(currentDate);
       pubsub.publish(CustomEvents.DateRangeChanged, dateRange);
     }
-  };
-})();
+  }
+);

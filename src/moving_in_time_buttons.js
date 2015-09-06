@@ -2,11 +2,7 @@
 
 var calendar = calendar || {};
 
-calendar.MovingInTimeButtons = (function() {
-  return {
-    create: create
-  };
-
+calendar.MovingInTimeButtons = createClassInitializedBy(
   function create(buttons, dateRange, config) {
     var self = {
       $buttons: $(buttons),
@@ -36,4 +32,4 @@ calendar.MovingInTimeButtons = (function() {
       return '.' + self.config.buttonsSelectors[period];
     }
   }
-})();
+);

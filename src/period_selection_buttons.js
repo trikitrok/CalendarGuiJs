@@ -2,11 +2,7 @@
 
 var calendar = calendar || {};
 
-calendar.PeriodSelectionButtons = (function() {
-  return {
-    create: create
-  };
-
+calendar.PeriodSelectionButtons = createClassInitializedBy(
   function create(buttons, dateRange, config) {
     var self = {
       $buttons: $(buttons),
@@ -59,4 +55,4 @@ calendar.PeriodSelectionButtons = (function() {
       return '.' + self.config.buttonsSelectors[period];
     }
   }
-})();
+);

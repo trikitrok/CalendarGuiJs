@@ -2,11 +2,7 @@
 
 var calendar = calendar || {};
 
-calendar.DateRangeView = (function() {
-  return {
-    create: create
-  };
-
+calendar.DateRangeView = createClassInitializedBy(
   function create(elem) {
     var self = {
       $elem: $(elem),
@@ -31,4 +27,4 @@ calendar.DateRangeView = (function() {
       render(dateRange);
     }
   }
-})();
+);

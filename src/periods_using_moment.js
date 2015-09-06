@@ -9,15 +9,9 @@ calendar.periodsUsingMoment = (function() {
     WEEKS = "weeks";
 
   return {
-    Month: {
-      create: createMonth
-    },
-    Year: {
-      create: createYear
-    },
-    Week: {
-      create: createWeek
-    }
+    Month: createClassInitializedBy(createMonth),
+    Year: createClassInitializedBy(createYear),
+    Week: createClassInitializedBy(createWeek)
   };
 
   function createMonth() {
