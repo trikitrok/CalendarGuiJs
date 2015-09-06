@@ -2,26 +2,38 @@
 
 var calendar = calendar || {};
 
-calendar.MovingInTimeButtons = function(buttons, dateRange, config) {
-  this.$buttons = $(buttons);
-  this.dateRange = dateRange;
-  this.config = config;
-  this.$buttons.on('click', this._buttonSelector('next'), _.bind(this._next, this));
-  this.$buttons.on('click', this._buttonSelector('current'), _.bind(this._current, this));
-  this.$buttons.on('click', this._buttonSelector('previous'), _.bind(this._previous, this));
-};
+calendar.MovingInTimeButtons = (function() {
+  return {
+    create: create
+  };
 
-_.extend(calendar.MovingInTimeButtons.prototype, {
-  _next: function() {
-    this.dateRange.next();
-  },
-  _current: function() {
-    this.dateRange.current();
-  },
-  _previous: function() {
-    this.dateRange.previous();
-  },
-  _buttonSelector: function(period) {
-    return '.' + this.config.buttonsSelectors[period];
+  function create(buttons, dateRange, config) {
+    var self = {
+      $buttons: $(buttons),
+      dateRange: dateRange,
+      config: config
+    };
+
+    self.$buttons.on('click', buttonSelector('next'), next);
+    self.$buttons.on('click', buttonSelector('current'), current);
+    self.$buttons.on('click', buttonSelector('previous'), previous);
+
+    return self;
+
+    function next() {
+      self.dateRange.next();
+    }
+
+    function current() {
+      self.dateRange.current();
+    }
+
+    function previous() {
+      self.dateRange.previous();
+    }
+
+    function buttonSelector(period) {
+      return '.' + self.config.buttonsSelectors[period];
+    }
   }
-});
+})();

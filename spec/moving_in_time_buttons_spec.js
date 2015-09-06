@@ -29,7 +29,7 @@ describe("Moving-in-time buttons", function() {
       current: function() {},
       previous: function() {},
     };
-    movingInTimeButtons = new calendar.MovingInTimeButtons(
+    movingInTimeButtons = calendar.MovingInTimeButtons.create(
       $movingInTimeButtons, fakeDateRange, config
     );
     clickOnButton = makeClickOnButtonFn($movingInTimeButtons, config.buttonsSelectors);
