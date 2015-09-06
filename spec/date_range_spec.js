@@ -6,7 +6,7 @@ describe('DateRange', function() {
   beforeEach(function() {
     clock = getClockInstance();
     spyOn(clock, 'currentDate').and.returnValue(moment("2014-11-11").toDate());
-    dateRange = calendar.dateRangeFactory.create(clock, calendar.periodsUsingMoment);
+    dateRange = calendar.DateRange.create(clock, calendar.periodsUsingMoment);
   });
 
   describe('on creation', function() {
@@ -131,14 +131,6 @@ describe('DateRange', function() {
   });
 
   describe("broadcasting that its state has changed", function() {
-    var clock, dateRange;
-
-    beforeEach(function() {
-      clock = getClockInstance();
-      spyOn(clock, 'currentDate').and.returnValue(moment("2014-11-11").toDate());
-      dateRange = calendar.dateRangeFactory.create(clock, calendar.periodsUsingMoment);
-    });
-
     it("emits a date-range-changed event when the period is set to a month", function() {
       pubsub.subscribe(CustomEvents.DateRangeChanged,
         function(event, dateRange) {

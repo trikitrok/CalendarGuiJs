@@ -2,7 +2,7 @@
 
 var calendar = calendar || {};
 
-calendar.dateRangeFactory = (function() {
+calendar.DateRange = (function() {
   var api = {};
   api.create = create;
   return api;
